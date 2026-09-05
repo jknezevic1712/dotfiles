@@ -1,0 +1,50 @@
+PATH=~/.console-ninja/.bin:$PATH
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+source ~/.nvm/nvm.sh
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
+
+source "$HOME/dotfiles/.config/.custom_commands.sh"
+
+function dnr() {
+	dotnet run
+}
+
+function small_fixtures() {
+	dotnet run 2 1 false 20 false true
+}
+
+function sm_fix_run() {
+	small_fixtures && cd .. && cd GSCLite && dnr
+}
+
+function new_fixtures_and_run() {
+	cd .. && cd GSCLite.Cli && dnr && cd .. && cd GSCLite && dnr
+}
+
+function nrs() {
+	NODE_OPTIONS=--max-old-space-size=8000 npm run start
+}
+
+function nro() {
+	npm run dev:optimized && npm run start
+}
+
+function nrd() {
+	npm run dev:debugging && npm run start
+}
+
+function nrt() {
+	npm run test
+}
+
+function nrl() {
+	npm run lint
+}
