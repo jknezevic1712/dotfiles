@@ -8,7 +8,7 @@ local config = wezterm.config_builder()
 config.default_prog = { 'powershell.exe', '-NoLogo' }
 
 -- Font settings
-config.font_size = 11.5
+config.font_size = 10
 config.line_height = 1.5
 config.font = wezterm.font('Fira Code', { italic = true, weight = 700 })
 
