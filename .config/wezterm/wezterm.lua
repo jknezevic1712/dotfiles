@@ -5,9 +5,9 @@ local constants = require 'constants'
 local config = wezterm.config_builder()
 
 -- Font settings
-config.font_size = 12
+config.font_size = 11
 config.line_height = 1.5
-config.font = wezterm.font("Fira Code", { italic = true, weight = 500 })
+config.font = wezterm.font('Fira Code', { italic = true, weight = 500 })
 
 -- Colors
 config.color_scheme = 'Catppuccin Mocha'
@@ -24,6 +24,7 @@ config.window_padding = {
 }
 config.macos_window_background_blur = 40
 config.window_background_image = constants.bg_image
+config.tab_bar_at_bottom = true
 
 -- Miscellaneous settings
 config.max_fps = 120

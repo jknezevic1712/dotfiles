@@ -107,6 +107,15 @@ return {
         'filename',
         cond = conditions.buffer_not_empty,
         color = 'LualineFilename',
+        path = 2,
+        shorting_target = 0,
+        fmt = function(name)
+          local parent = vim.fn.fnamemodify(vim.fn.getcwd(), ':h') .. '/'
+          if name:sub(1, #parent) == parent then
+            return name:sub(#parent + 1)
+          end
+          return name
+        end,
       }
 
       ins_left {
