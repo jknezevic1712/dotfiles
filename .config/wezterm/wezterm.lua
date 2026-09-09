@@ -22,8 +22,8 @@ config.window_padding = {
   top = 10,
   bottom = 10,
 }
-config.macos_window_background_blur = 40
-config.window_background_opacity = 0.9
+config.macos_window_background_blur = 20
+config.window_background_opacity = 0.85
 config.window_background_image = constants.bg_image
 config.tab_bar_at_bottom = true
 
