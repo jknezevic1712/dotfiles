@@ -5,14 +5,61 @@ local M = {}
 
 function M.apply_to_config(config)
   config.keys = {
-    -- Global keybind: Clear scrollback and viewport anywhere in WezTerm
+    -- Clear scrollback
     {
       key = 'k',
-      mods = 'CMD',
+      mods = 'CTRL',
       action = act.Multiple {
         act.ClearScrollback 'ScrollbackAndViewport',
-        act.SendKey { key = 'l', mods = 'CTRL' }, -- Cleanly redraws your Zsh prompt
+        act.SendKey { key = 'l', mods = 'CTRL' },
       },
+    },
+
+    -- Switch tabs with Ctrl+1, Ctrl+2, Ctrl+3...
+    {
+      key = '1',
+      mods = 'CTRL',
+      action = act.ActivateTab(0),
+    },
+    {
+      key = '2',
+      mods = 'CTRL',
+      action = act.ActivateTab(1),
+    },
+    {
+      key = '3',
+      mods = 'CTRL',
+      action = act.ActivateTab(2),
+    },
+    {
+      key = '4',
+      mods = 'CTRL',
+      action = act.ActivateTab(3),
+    },
+    {
+      key = '5',
+      mods = 'CTRL',
+      action = act.ActivateTab(4),
+    },
+    {
+      key = '6',
+      mods = 'CTRL',
+      action = act.ActivateTab(5),
+    },
+    {
+      key = '7',
+      mods = 'CTRL',
+      action = act.ActivateTab(6),
+    },
+    {
+      key = '8',
+      mods = 'CTRL',
+      action = act.ActivateTab(7),
+    },
+    {
+      key = '9',
+      mods = 'CTRL',
+      action = act.ActivateTab(8),
     },
   }
 end
