@@ -3,24 +3,39 @@ return {
     'stevearc/conform.nvim',
     event = { 'BufWritePre' },
     cmd = { 'ConformInfo' },
+
     opts = function()
       local opts = {
         formatters_by_ft = {
           lua = { 'stylua' },
+
+          javascript = { 'biome-check', 'prettier', 'prettierd' },
+          javascriptreact = { 'biome-check', 'prettier', 'prettierd' },
+          typescript = { 'biome-check', 'prettier', 'prettierd' },
+          typescriptreact = { 'biome-check', 'prettier', 'prettierd' },
+          json = { 'biome-check', 'prettier', 'prettierd' },
+          jsonc = { 'biome-check', 'prettier', 'prettierd' },
+          css = { 'biome-check', 'prettier', 'prettierd' },
+
           astro = { 'prettier', 'prettierd' },
-          javascript = { 'biome', 'prettier', 'prettierd' },
-          javascriptreact = { 'biome', 'prettier', 'prettierd' },
-          typescript = { 'biome', 'prettier', 'prettierd' },
-          typescriptreact = { 'biome', 'prettier', 'prettierd' },
-          json = { 'biome', 'prettier', 'prettierd' },
-          jsonc = { 'biome', 'prettier', 'prettierd' },
-          css = { 'biome', 'prettier', 'prettierd' },
           graphql = { 'prettier', 'prettierd' },
           html = { 'prettier', 'prettierd' },
           less = { 'prettier', 'prettierd' },
           scss = { 'prettier', 'prettierd' },
           vue = { 'prettier', 'prettierd' },
           yaml = { 'prettier', 'prettierd' },
+        },
+
+        formatters = {
+          ['biome-check'] = {
+            command = 'biome',
+            args = {
+              'check',
+              '--write',
+              '$FILENAME',
+            },
+            stdin = false,
+          },
         },
       }
 
@@ -31,11 +46,10 @@ return {
 
         local filetype = vim.bo[bufnr].filetype
 
-        -- Check if biome.json exists in the project root
-        local has_biome = vim.fn.filereadable(vim.fn.getcwd() .. '/biome.json') == 1
+        local has_biome = vim.fn.filereadable(vim.fn.getcwd() .. '/biome.json')
+            == 1
           or vim.fn.filereadable(vim.fn.getcwd() .. '/biome.jsonc') == 1
 
-        -- Filetypes supported by both Biome and Prettier
         local biome_supported = {
           javascript = true,
           javascriptreact = true,
@@ -46,7 +60,6 @@ return {
           css = true,
         }
 
-        -- Filetypes only supported by Prettier
         local prettier_only = {
           graphql = true,
           handlebars = true,
@@ -57,15 +70,14 @@ return {
           yaml = true,
         }
 
-        -- Prioritize Biome if biome.json exists and filetype is supported
         if has_biome and biome_supported[filetype] then
           return {
-            formatters = { 'biome' },
+            formatters = { 'biome-check' },
             timeout_ms = 2000,
+            lsp_format = 'never',
           }
         end
 
-        -- Fallback to Prettier for supported filetypes
         if biome_supported[filetype] or prettier_only[filetype] then
           return {
             formatters = { 'prettier', 'prettierd' },
