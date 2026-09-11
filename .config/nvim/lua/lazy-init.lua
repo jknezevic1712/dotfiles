@@ -25,6 +25,7 @@ require('lazy').setup({
     { import = 'plugins.editor.file-tree' },
     { import = 'plugins.editor.tmux' },
     { import = 'plugins.editor.ufo' },
+    { import = 'plugins.editor.visual-multi' },
     { import = 'plugins.editor.which-key' },
     { import = 'plugins.formatting.conform' },
     { import = 'plugins.test.core' },
