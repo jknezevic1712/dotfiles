@@ -61,6 +61,32 @@ function M.apply_to_config(config)
       mods = 'CTRL',
       action = act.ActivateTab(8),
     },
+
+    {
+      key = 'Space',
+      mods = 'CTRL',
+      action = act.SendKey {
+        key = 'Space',
+        mods = 'CTRL',
+      },
+    },
+
+    {
+      key = 'c',
+      mods = 'CTRL',
+      action = act.SendKey {
+        key = 'c',
+        mods = 'CTRL',
+      },
+    },
+    {
+      key = 'v',
+      mods = 'CTRL',
+      action = act.SendKey {
+        key = 'v',
+        mods = 'CTRL',
+      },
+    },
   }
 end
 

@@ -12,7 +12,12 @@ return {
     opts = {
       -- Default preset: <C-y> accept, <C-n>/<C-p> select, <C-space> open/docs,
       -- <C-e> hide, <C-b>/<C-f> scroll docs, <Tab>/<S-Tab> snippet jump.
-      keymap = { preset = 'default' },
+      keymap = {
+        preset = 'default',
+        ['<C-o>'] = { 'show' },
+        ['<Up>'] = { 'select_prev' },
+        ['<Down>'] = { 'select_next' },
+      },
       appearance = { nerd_font_variant = 'mono' },
       completion = {
         documentation = { auto_show = true, auto_show_delay_ms = 200 },
