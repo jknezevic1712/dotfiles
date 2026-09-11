@@ -69,3 +69,7 @@ vim.keymap.set('i', '<D-v>', '<C-r>+', { desc = 'Paste from system clipboard' })
 -- Better indenting
 keymap.set('v', '<', '<gv')
 keymap.set('v', '>', '>gv')
+
+-- Move lines
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move selection down' })
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move selection up' })
