@@ -94,6 +94,36 @@ return {
           api.node.open.horizontal_no_picker,
           ops 'Open Vertical'
         )
+
+        vim.keymap.set('n', 'A', function()
+          local node = api.tree.get_node_under_cursor()
+          local base_path = node.absolute_path
+
+          if vim.fn.isdirectory(base_path) ~= 1 then
+            base_path = vim.fn.fnamemodify(base_path, ':h')
+          end
+
+          vim.ui.input({
+            prompt = 'Create directory: ',
+          }, function(name)
+            if not name or name == '' then
+              return
+            end
+
+            local path = vim.fs.joinpath(base_path, name)
+
+            if vim.fn.isdirectory(path) == 1 then
+              vim.notify(
+                'Directory already exists: ' .. path,
+                vim.log.levels.WARN
+              )
+              return
+            end
+
+            vim.fn.mkdir(path, 'p')
+            api.tree.reload()
+          end)
+        end, ops 'Create Directory')
       end
 
       opts.on_attach = keybindings
