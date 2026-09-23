@@ -7,26 +7,35 @@ return {
     event = 'InsertEnter',
     version = '*',
     dependencies = { 'folke/lazydev.nvim' },
+
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
-      -- Default preset: <C-y> accept, <C-n>/<C-p> select, <C-space> open/docs,
-      -- <C-e> hide, <C-b>/<C-f> scroll docs, <Tab>/<S-Tab> snippet jump.
       keymap = {
         preset = 'default',
-        ['<C-o>'] = { 'show' },
+
+        ['<C-Space>'] = { 'show' },
         ['<Up>'] = { 'select_prev' },
         ['<Down>'] = { 'select_next' },
+        ['<C-p>'] = { 'select_prev' },
+        ['<C-n>'] = { 'select_next' },
       },
-      appearance = { nerd_font_variant = 'mono' },
+
+      appearance = {
+        nerd_font_variant = 'mono',
+      },
+
       completion = {
-        documentation = { auto_show = true, auto_show_delay_ms = 200 },
+        documentation = {
+          auto_show = true,
+          auto_show_delay_ms = 200,
+        },
       },
+
       sources = {
         default = { 'lsp', 'path', 'snippets', 'lazydev' },
+
         providers = {
-          -- lazydev completions for editing this Neovim config; high score so
-          -- they outrank (and dedupe) lua_ls's own suggestions.
           lazydev = {
             name = 'LazyDev',
             module = 'lazydev.integrations.blink',
@@ -34,9 +43,14 @@ return {
           },
         },
       },
-      -- Use blink's built-in snippet engine (no LuaSnip).
-      snippets = { preset = 'default' },
-      fuzzy = { implementation = 'prefer_rust_with_warning' },
+
+      snippets = {
+        preset = 'default',
+      },
+
+      fuzzy = {
+        implementation = 'prefer_rust_with_warning',
+      },
     },
   },
 }
