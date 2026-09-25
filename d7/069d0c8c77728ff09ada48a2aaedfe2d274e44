@@ -1,0 +1,14 @@
+.config/nvim/lua/plugins/editor/ufo.lua
+  h_5267488a404c7e 19
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "d7069d0c8c77728ff09ada48a2aaedfe2d274e44",
+  "prompts": {},
+  "humans": {
+    "h_5267488a404c7e": {
+      "author": "jknezevic-cirtuo <jakov.knezevic@cirtuo.com>"
+    }
+  }
+}
