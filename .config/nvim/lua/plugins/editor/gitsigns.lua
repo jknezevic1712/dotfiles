@@ -22,6 +22,14 @@ return {
         topdelete = { text = '▔' },
         changedelete = { text = '▌' },
       }
+      opts.current_line_blame = true
+      opts.current_line_blame_opts = {
+        virt_text = true,
+        virt_text_pos = 'right_align',
+        delay = 150,
+      }
+      opts.current_line_blame_formatter =
+        '<author>, <author_time:%R> - <summary>'
       -- Higher-contrast gutter colors (GitHub-dark diff palette), kept
       -- applied across colorscheme reloads so Catppuccin can't pastel them.
       local function gitsigns_hl()
