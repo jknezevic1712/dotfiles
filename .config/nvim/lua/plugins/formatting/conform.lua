@@ -46,6 +46,7 @@ return {
 
         local filetype = vim.bo[bufnr].filetype
 
+        -- Check if biome.json exists in the project root
         local has_biome = vim.fn.filereadable(vim.fn.getcwd() .. '/biome.json')
             == 1
           or vim.fn.filereadable(vim.fn.getcwd() .. '/biome.jsonc') == 1
@@ -80,7 +81,8 @@ return {
 
         if biome_supported[filetype] or prettier_only[filetype] then
           return {
-            formatters = { 'prettier', 'prettierd' },
+            formatters = { 'prettierd', 'prettier' },
+            stop_after_first = true,
             timeout_ms = 2000,
           }
         end
