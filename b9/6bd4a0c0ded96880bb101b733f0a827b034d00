@@ -1,0 +1,14 @@
+.config/nvim/lua/plugins/editor/gitsigns.lua
+  h_5267488a404c7e 25-32
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "b96bd4a0c0ded96880bb101b733f0a827b034d00",
+  "prompts": {},
+  "humans": {
+    "h_5267488a404c7e": {
+      "author": "jknezevic-cirtuo <jakov.knezevic@cirtuo.com>"
+    }
+  }
+}
