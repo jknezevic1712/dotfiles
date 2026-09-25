@@ -63,8 +63,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- Copy/paste from clipboard
-vim.keymap.set('v', '<D-c>', '"+y', { desc = 'Copy to system clipboard' })
-vim.keymap.set('i', '<D-v>', '<C-r>+', { desc = 'Paste from system clipboard' })
+vim.keymap.set('x', '<F13>', '"+y', {
+  desc = 'Copy selection to system clipboard',
+})
 
 -- Better indenting
 keymap.set('v', '<', '<gv')
