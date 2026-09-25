@@ -20,7 +20,7 @@ return {
     'neovim/nvim-lspconfig',
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
-      { 'williamboman/mason.nvim', opts = {} },
+      { 'williamboman/mason.nvim', lazy = false, opts = {} },
       'WhoIsSethDaniel/mason-tool-installer.nvim',
       'saghen/blink.cmp',
     },
@@ -40,6 +40,7 @@ return {
         'dockerls',
         'docker_compose_language_service',
         'neocmake',
+        'angularls',
       }
 
       -- Broadcast completion capabilities (blink.cmp) + ufo folding to every
@@ -69,18 +70,36 @@ return {
           end
 
           map('gd', function()
-            require('fzf-lua').lsp_definitions { jump1 = true, ignore_current_line = true }
+            require('fzf-lua').lsp_definitions {
+              jump1 = true,
+              ignore_current_line = true,
+            }
           end, 'Goto Definition')
           map('gy', function()
-            require('fzf-lua').lsp_typedefs { jump1 = true, ignore_current_line = true }
+            require('fzf-lua').lsp_typedefs {
+              jump1 = true,
+              ignore_current_line = true,
+            }
           end, 'Goto Type Definition')
           map('grr', function()
-            require('fzf-lua').lsp_references { jump1 = true, ignore_current_line = true }
+            require('fzf-lua').lsp_references {
+              jump1 = true,
+              ignore_current_line = true,
+            }
           end, 'References')
           map('gri', function()
-            require('fzf-lua').lsp_implementations { jump1 = true, ignore_current_line = true }
+            require('fzf-lua').lsp_implementations {
+              jump1 = true,
+              ignore_current_line = true,
+            }
           end, 'Goto Implementation')
-          map('<leader>ca', vim.lsp.buf.code_action, 'Code Action', { 'n', 'x' })
+          map(
+            '<leader>ca',
+            vim.lsp.buf.code_action,
+            'Code Action',
+            { 'n', 'x' }
+          )
+          map('K', vim.lsp.buf.hover, 'Hover Documentation')
 
           local client = vim.lsp.get_client_by_id(event.data.client_id)
 
@@ -92,10 +111,8 @@ return {
               vim.lsp.protocol.Methods.textDocument_documentHighlight
             )
           then
-            local hl = vim.api.nvim_create_augroup(
-              'lsp-highlight',
-              { clear = false }
-            )
+            local hl =
+              vim.api.nvim_create_augroup('lsp-highlight', { clear = false })
             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
               buffer = event.buf,
               group = hl,
@@ -141,6 +158,7 @@ return {
       require('mason-tool-installer').setup {
         ensure_installed = {
           -- language servers
+          'angular-language-server',
           'lua-language-server',
           'vtsls',
           'eslint-lsp',
