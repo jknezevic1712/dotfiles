@@ -1,0 +1,14 @@
+.config/nvim/lua/plugins/coding/treesitter.lua
+  h_5267488a404c7e 2,4-5,10-11,15,17-46,48-49,51-54,56-58,60-61
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "6747c1194a6727b309a7f944f1688952e822b86c",
+  "prompts": {},
+  "humans": {
+    "h_5267488a404c7e": {
+      "author": "jknezevic-cirtuo <jakov.knezevic@cirtuo.com>"
+    }
+  }
+}
