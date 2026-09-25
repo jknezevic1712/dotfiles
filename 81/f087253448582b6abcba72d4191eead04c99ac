@@ -1,0 +1,18 @@
+.config/nvim/lua/lazy-init.lua
+  h_5267488a404c7e 19
+.config/nvim/lua/plugins/coding/lspconfig.lua
+  h_5267488a404c7e 23,43,73-76,79-82,85-88,91-94,96-102,114-115,161
+.config/nvim/lua/plugins/coding/ts-expand-hover.lua
+  h_5267488a404c7e 1-64
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "81f087253448582b6abcba72d4191eead04c99ac",
+  "prompts": {},
+  "humans": {
+    "h_5267488a404c7e": {
+      "author": "jknezevic-cirtuo <jakov.knezevic@cirtuo.com>"
+    }
+  }
+}
