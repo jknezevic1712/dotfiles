@@ -5,7 +5,7 @@ local constants = require 'constants'
 local config = wezterm.config_builder()
 
 -- Font settings
-config.font_size = 11
+config.font_size = 10
 config.line_height = 1.5
 config.font = wezterm.font('Fira Code', { italic = true, weight = 500 })
 
@@ -19,7 +19,7 @@ config.window_decorations = 'RESIZE'
 config.window_padding = {
   left = 15,
   right = 15,
-  top = 10,
+  top = 35,
   bottom = 10,
 }
 config.macos_window_background_blur = 20
