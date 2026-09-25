@@ -20,7 +20,7 @@ return {
     'neovim/nvim-lspconfig',
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
-      { 'williamboman/mason.nvim', opts = {} },
+      { 'williamboman/mason.nvim', lazy = false, opts = {} },
       'WhoIsSethDaniel/mason-tool-installer.nvim',
       'saghen/blink.cmp',
     },
@@ -41,6 +41,7 @@ return {
         'docker_compose_language_service',
         'neocmake',
         'biome',
+        'angularls',
       }
 
       -- Broadcast completion capabilities (blink.cmp) + ufo folding to every
@@ -99,6 +100,7 @@ return {
             'Code Action',
             { 'n', 'x' }
           )
+          map('K', vim.lsp.buf.hover, 'Hover Documentation')
 
           local client = vim.lsp.get_client_by_id(event.data.client_id)
 
@@ -157,6 +159,7 @@ return {
       require('mason-tool-installer').setup {
         ensure_installed = {
           -- language servers
+          'angular-language-server',
           'lua-language-server',
           'vtsls',
           'eslint-lsp',
