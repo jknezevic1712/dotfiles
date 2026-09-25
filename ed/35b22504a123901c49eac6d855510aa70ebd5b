@@ -1,0 +1,14 @@
+.config/nvim/lua/plugins/formatting/conform.lua
+  h_5267488a404c7e 35-36,72-73
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "ed35b22504a123901c49eac6d855510aa70ebd5b",
+  "prompts": {},
+  "humans": {
+    "h_5267488a404c7e": {
+      "author": "jknezevic-cirtuo <jakov.knezevic@cirtuo.com>"
+    }
+  }
+}
