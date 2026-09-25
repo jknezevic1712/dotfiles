@@ -16,7 +16,7 @@ return {
         end,
       },
       {
-        'K',
+        '<leader>k',
         function()
           local winid = require('ufo').peekFoldedLinesUnderCursor()
           if not winid then
