@@ -39,7 +39,7 @@ return {
         adaptive_size = false,
         side = 'right',
         preserve_window_proportions = true,
-        width = 40,
+        width = 120,
       },
       renderer = {
         full_name = false,
