@@ -28,20 +28,20 @@ return {
       -- Servers to activate. Servers without a file in `lsp/` use
       -- nvim-lspconfig's bundled defaults as-is.
       local servers = {
-        'lua_ls',
+        -- 'lua_ls',
         'eslint',
         'vtsls',
         'tailwindcss',
         'cssls',
-        'gopls',
-        'pyright',
+        -- 'gopls',
+        -- 'pyright',
         'ruff',
-        'astro',
+        -- 'astro',
         'dockerls',
         'docker_compose_language_service',
         'neocmake',
         'biome',
-        'angularls',
+        -- 'angularls',
       }
 
       -- Broadcast completion capabilities (blink.cmp) + ufo folding to every
