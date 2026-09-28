@@ -1,10 +1,13 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
-    branch = 'master',
+    branch = 'main',
     lazy = false,
     build = ':TSUpdate',
+
     config = function()
+      local treesitter = require 'nvim-treesitter'
+
       vim.filetype.add {
         pattern = {
           ['config'] = 'dosini',
@@ -14,8 +17,42 @@ return {
 
       vim.treesitter.language.register('angular', 'htmlangular')
 
-      require('nvim-treesitter.configs').setup {
-        ensure_installed = {
+      local parsers = {
+        'angular',
+        'astro',
+        'bash',
+        'c',
+        'css',
+        'diff',
+        'dockerfile',
+        'editorconfig',
+        'gitignore',
+        'go',
+        'gomod',
+        'gosum',
+        'gowork',
+        'html',
+        'javascript',
+        'json',
+        'lua',
+        'luadoc',
+        'markdown',
+        'markdown_inline',
+        'python',
+        'sql',
+        'tsx',
+        'typescript',
+        'vim',
+        'vimdoc',
+        'yaml',
+      }
+
+      treesitter.setup()
+
+      treesitter.install(parsers)
+
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = {
           'angular',
           'astro',
           'bash',
@@ -33,32 +70,25 @@ return {
           'javascript',
           'json',
           'lua',
-          'luadoc',
           'markdown',
-          'markdown_inline',
           'python',
           'sql',
-          'tsx',
           'typescript',
+          'typescriptreact',
           'vim',
           'vimdoc',
           'yaml',
+          'htmlangular',
         },
 
-        sync_install = false,
-        auto_install = false,
+        callback = function()
+          -- Tree-sitter highlighting
+          vim.treesitter.start()
 
-        highlight = {
-          enable = true,
-          additional_vim_regex_highlighting = false,
-        },
-
-        indent = {
-          enable = true,
-        },
-
-        -- Folding remains managed by your nvim-ufo configuration.
-      }
+          -- Tree-sitter indentation
+          vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end,
+      })
     end,
   },
 }
