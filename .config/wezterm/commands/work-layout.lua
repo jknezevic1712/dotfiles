@@ -28,6 +28,17 @@ local command = {
       '--cwd',
       'E:\\Personal_projects',
     }
+
+    -- Third tab
+    wezterm.run_child_process {
+      wezterm_bin,
+      'cli',
+      'spawn',
+      '--window-id',
+      current_window_id,
+      '--cwd',
+      'E:\\Personal_projects',
+    }
   end),
 }
 
